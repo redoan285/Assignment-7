@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Alex Rivera",
+    "picture": "https://randomuser.me/api/portraits/men/32.jpg",
+    "email": "alex.rivera@example.com",
+    "days_since_contact": 8,
+    "status": "on-track",
+    "tags": ["gym buddy", "work", "close friend"],
+    "bio": "Met at the climbing gym. Always pushes me to try harder routes.",
+    "goal": 14,
+    "next_due_date": "2025-04-18"
+  },
+  {
+    "id": 2,
+    "name": "Jordan Lee",
+    "picture": "https://randomuser.me/api/portraits/women/68.jpg",
+    "email": "jordan.lee@example.com",
+    "days_since_contact": 23,
+    "status": "overdue",
+    "tags": ["college", "book club"],
+    "bio": "We survived organic chemistry together. She's a pediatrician now.",
+    "goal": 14,
+    "next_due_date": "2025-04-05"
+  },
+  {
+    "id": 3,
+    "name": "Sabbir Hossain",
+    "picture": "https://randomuser.me/api/portraits/men/67.jpg",
+    "email": "sabbir.hossain88@yahoo.com",
+    "days_since_contact": 18,
+    "status": "overdue",
+    "tags": ["work", "gaming"],
+    "bio": "Colleague turned friend. We spend weekends playing PUBG and talking about tech startups.",
+    "goal": 10,
+    "next_due_date": "2025-04-05"
+  },
+  {
+    "id": 4,
+    "name": "Samira Khan",
+    "picture": "https://randomuser.me/api/portraits/women/45.jpg",
+    "email": "samira.khan@example.com",
+    "days_since_contact": 45,
+    "status": "overdue",
+    "tags": ["high school", "lost touch", "trying to reconnect"],
+    "bio": "My first best friend. She moved to Canada last year. Miss her a lot.",
+    "goal": 30,
+    "next_due_date": "2025-03-28"
+  },
+  {
+    "id": 5,
+    "name": "Taylor Brooks",
+    "picture": "https://randomuser.me/api/portraits/men/91.jpg",
+    "email": "taylor.brooks@example.com",
+    "days_since_contact": 12,
+    "status": "almost due",
+    "tags": ["coworker", "music", "mentor"],
+    "bio": "Former team lead. We still jam on weekends — he plays bass.",
+    "goal": 14,
+    "next_due_date": "2025-04-16"
+  },
+  {
+    "id": 6,
+    "name": "Riley Santos",
+    "picture": "https://randomuser.me/api/portraits/women/23.jpg",
+    "email": "riley.santos@example.com",
+    "days_since_contact": 2,
+    "status": "on-track",
+    "tags": ["sister", "family", "close friend"],
+    "bio": "My actual sister and also my best friend. Talks every single day.",
+    "goal": 7,
+    "next_due_date": "2025-04-25"
+  },
+  {
+    "id": 7,
+    "name": "Morgan Hayes",
+    "picture": "https://randomuser.me/api/portraits/men/54.jpg",
+    "email": "morgan.hayes@example.com",
+    "days_since_contact": 31,
+    "status": "almost due",
+    "tags": ["travel", "adventure", "college"],
+    "bio": "Backpacked through Europe together in 2019. Lives in Austin now.",
+    "goal": 21,
+    "next_due_date": "2025-03-25"
+  },
+  {
+    "id": 8,
+    "name": "Jessie Wu",
+    "picture": "https://randomuser.me/api/portraits/women/89.jpg",
+    "email": "jessie.wu@example.com",
+    "days_since_contact": 9,
+    "status": "on-track",
+    "tags": ["board games", "D&D", "close friend"],
+    "bio": "Our Dungeon Master for 3 years. Incredible storyteller.",
+    "goal": 14,
+    "next_due_date": "2025-04-19"
+  },
+  {
+    "id": 9,
+    "name": "Dakota Smith",
+    "picture": "https://randomuser.me/api/portraits/men/17.jpg",
+    "email": "dakota.s@example.com",
+    "days_since_contact": 60,
+    "status": "overdue",
+    "tags": ["ex-roommate", "old job", "should call"],
+    "bio": "Lived together during grad school. He got married last year — I missed it.",
+    "goal": 30,
+    "next_due_date": "2025-03-15"
+  }
+]
