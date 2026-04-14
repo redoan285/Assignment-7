@@ -1,8 +1,13 @@
 import React from 'react';
+import FriendesDetails from '../../pages/friendsDetais/FriendesDetails';
+import { Link } from 'react-router';
 
 const FriendsCards = ({data}) => {
 
-    console.log(data, "friend data");
+
+    <FriendesDetails data={data} />
+
+    // console.log(data, "friend data");
 
     // ট্যাগ থেকে ক্যাটাগরি বানানো (WORK, FAMILY, HOBBY, TRAVEL ইত্যাদি)
 
@@ -10,26 +15,13 @@ const FriendsCards = ({data}) => {
 
         const lowerTag = tag.toLowerCase();
 
-        if (lowerTag.includes('work') || lowerTag.includes('coworker') || lowerTag.includes('job')) return 'WORK';
-
-        if (lowerTag.includes('family') || lowerTag.includes('sister') || lowerTag.includes('brother') || lowerTag.includes('cousin')) return 'FAMILY';
-
-        if (lowerTag.includes('hobby') || lowerTag.includes('music') || lowerTag.includes('book') || lowerTag.includes('dnd') || lowerTag.includes('game')) return 'HOBBY';
-
-        if (lowerTag.includes('travel') || lowerTag.includes('adventure')) return 'TRAVEL';
-
-        if (lowerTag.includes('college') || lowerTag.includes('university') || lowerTag.includes('school')) return 'COLLEGE';
-
-        if (lowerTag.includes('gym') || lowerTag.includes('fitness')) return 'FITNESS';
-
-        if (lowerTag.includes('church') || lowerTag.includes('volunteer')) return 'SERVICE';
-
-        return tag.toUpperCase().slice(0, 8);
-
+         if (lowerTag.includes('work') || lowerTag.includes('coworker') || lowerTag.includes('job')) return 'WORK';
     };
 
 
-
+// const getCategoryLabel = (tag) => { 
+//         const lowerTag = tag.toLowerCase(); 
+//         if (lowerTag.includes('work') || lowerTag.includes('coworker') || lowerTag.includes('job')) return 'WORK';
 
     // JSON এর status অনুসারে কালার ও লেবেল
     const getStatusInfo = (status) => {
@@ -59,13 +51,15 @@ const FriendsCards = ({data}) => {
 
     
 
-    
+    // console.log(data);
+    // <FriendesDetailsils data={data} />
+
 
     return (
 
-        <div>
+        <div className="flex justify-center items-center ">
 
-            <div className="card bg-base-100 w-96 shadow-sm rounded-lg border border-gray-200">
+            <Link to={`/${data.id}`} className="card bg-base-100 w-96 shadow-sm rounded-lg border border-gray-200">
 
   <figure className="px-10 pt-10">
 
@@ -89,7 +83,7 @@ const FriendsCards = ({data}) => {
 
         {data.tags.map((tag, index) => (  
 
-            <div key={index} className="badge bg-green-200 m-1">{getCategoryLabel(tag)}</div>
+            <div key={index} className="badge w-min bg-green-200 m-1">{getCategoryLabel(tag)}</div>
 
         ))}   
 </div>
@@ -101,7 +95,7 @@ const FriendsCards = ({data}) => {
                         {getStatusInfo(data.status).label}
                     </div>
 
-</div>
+</Link>
             
 
         </div>
