@@ -21,3 +21,30 @@
         return tag.toUpperCase().slice(0, 8);
 
     };
+
+     // JSON এর status অনুসারে কালার ও লেবেল
+    export const getStatusInfo = (status) => {
+        switch (status?.toLowerCase()) {
+            case "overdue":
+                return {
+                    label: "OVERDUE",
+                    color: "bg-red-500 text-white"
+                };
+            case "almost due":
+                return {
+                    label: "ALMOST DUE",
+                    color: "bg-amber-400 text-black"
+                };
+            case "on-track":
+                return {
+                    label: "ON TRACK",
+                    color: "bg-emerald-600 text-white"
+                };
+            default:
+                return {
+                    label: status?.toUpperCase() || "UNKNOWN",
+                    color: "bg-gray-400 text-white"
+                };
+        }
+
+    };
