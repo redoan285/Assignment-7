@@ -1,107 +1,55 @@
 import React from 'react';
-import FriendesDetails from '../../pages/friendsDetais/FriendesDetails';
-import { Link } from 'react-router';
+import { Link } from 'react-router';   // ← সঠিক import
+import { getCategoryLabel, getStatusInfo } from '../../pages/catagory/Catagory'; // যদি আলাদা ফাইলে থাকে
 
-const FriendsCards = ({data}) => {
-
-
-    <FriendesDetails data={data} />
-
-    // console.log(data, "friend data");
-
-    // ট্যাগ থেকে ক্যাটাগরি বানানো (WORK, FAMILY, HOBBY, TRAVEL ইত্যাদি)
-
-    const getCategoryLabel = (tag) => {
-
-        const lowerTag = tag.toLowerCase();
-
-         if (lowerTag.includes('work') || lowerTag.includes('coworker') || lowerTag.includes('job')) return 'WORK';
-    };
-
-
-// const getCategoryLabel = (tag) => { 
-//         const lowerTag = tag.toLowerCase(); 
-//         if (lowerTag.includes('work') || lowerTag.includes('coworker') || lowerTag.includes('job')) return 'WORK';
-
-    // JSON এর status অনুসারে কালার ও লেবেল
-    const getStatusInfo = (status) => {
-        switch (status?.toLowerCase()) {
-            case "overdue":
-                return {
-                    label: "OVERDUE",
-                    color: "bg-red-500 text-white"
-                };
-            case "almost due":
-                return {
-                    label: "ALMOST DUE",
-                    color: "bg-amber-400 text-black"
-                };
-            case "on-track":
-                return {
-                    label: "ON TRACK",
-                    color: "bg-emerald-600 text-white"
-                };
-            default:
-                return {
-                    label: status?.toUpperCase() || "UNKNOWN",
-                    color: "bg-gray-400 text-white"
-                };
-        }
-    };
-
+const FriendsCards = ({ data }) => {
     
-
-    // console.log(data);
-    // <FriendesDetailsils data={data} />
-
-
     return (
+        <Link 
+            to={`/${data.id}`} 
+            className="block bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 overflow-hidden"
+        >
+            <div className="flex flex-col items-center pt-6 pb-5 px-4 text-center">
+                
+                {/* Avatar */}
+                <div className="w-20 h-20 mb-4">
+                    <img
+                        src={data.picture}
+                        alt={data.name}
+                        className="w-full h-full rounded-full object-cover border-2 border-white shadow"
+                    />
+                </div>
 
-        <div className="flex justify-center items-center ">
+                {/* Name */}
+                <h2 className="text-lg font-semibold text-gray-800 mb-1">
+                    {data.name}
+                </h2>
 
-            <Link to={`/${data.id}`} className="card bg-base-100 w-96 shadow-sm rounded-lg border border-gray-200">
+                {/* Time ago */}
+                <p className="text-gray-500 text-sm mb-4">
+                    {data.goal || '62'}d ago
+                </p>
 
-  <figure className="px-10 pt-10">
+                {/* Category Tags */}
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                    {data.tags?.map((tag, index) => (
+                        <span 
+                            key={index}
+                            className="text-xs font-medium px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full"
+                        >
+                            {getCategoryLabel(tag)}
+                        </span>
+                    ))}
+                </div>
 
-    <img
+                {/* Status Badge */}
+                <div className={`text-xs font-semibold px-4 py-1.5 rounded-full ${getStatusInfo(data.status).color}`}>
+                    {getStatusInfo(data.status).label}
+                </div>
 
-      src={data.picture}
-
-      alt={data.name}
-
-      className="rounded-full" />
-
-  </figure>
-
-  <div className="card-body items-center text-center">
-
-    <h2 className="card-title">{data.name}</h2>
-
-    <p className="text-gray-600 text-xl font-semibold">{data.goal}d ago</p>
-
-    <div className="card-actions">
-
-        {data.tags.map((tag, index) => (  
-
-            <div key={index} className="badge w-min bg-green-200 m-1">{getCategoryLabel(tag)}</div>
-
-        ))}   
-</div>
-
-  </div>
-
-   {/* Status Badge - এখন JSON এর status দেখাবে */}
-                    <div className={`badge text-center mx-auto mb-5 rounded-full  ${getStatusInfo(data.status).color} font-semibold px-4 py-1.5 text-sm tracking-wider`}>
-                        {getStatusInfo(data.status).label}
-                    </div>
-
-</Link>
-            
-
-        </div>
-
+            </div>
+        </Link>
     );
-
 };
 
 export default FriendsCards;
