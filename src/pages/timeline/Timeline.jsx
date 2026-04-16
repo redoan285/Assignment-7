@@ -2,16 +2,22 @@
 import React, { useContext } from 'react';
 // import { ContactsFriendProviderContext } from '../../contest/ContactsFriendProviderContext';
 import { ContactsFriendProviderContext } from '../../contest/ContactFriendProviderContext';
+import { MdAddIcCall, MdOutlineTextsms } from 'react-icons/md';
+import { FcVideoCall } from 'react-icons/fc';
 
 const Timeline = () => {
     const { interactions } = useContext(ContactsFriendProviderContext);
+    
+    
 
     const getIcon = (type) => {
-        if (type === 'Call') return '📞';
-        if (type === 'Text') return '💬';
-        if (type === 'Video') return '🎥';
-        return '🤝';
+        if (type === 'Call') return  <MdAddIcCall />;
+        if (type === 'Text') return <MdOutlineTextsms />;
+        if (type === 'Video') return <FcVideoCall />;
+        
     };
+
+    
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-gray-50 min-h-screen">

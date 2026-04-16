@@ -7,6 +7,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 import { FaArchive } from 'react-icons/fa';
 import { FiPhone, FiMessageSquare, FiVideo, FiEdit2, FiClock } from 'react-icons/fi';
 import { ContactsFriendProviderContext } from '../../contest/ContactFriendProviderContext';
+import { toast } from 'react-toastify';
 
 const FriendesDetails = () => {
     const { id } = useParams();
@@ -46,19 +47,19 @@ const FriendesDetails = () => {
 
     const friend = friends.find(f => f.id === parseInt(id));
 
-    if (!friend) {
-        return (
-            <div className="text-center py-32">
-                <div className="text-7xl mb-6">😔</div>
-                <h2 className="text-3xl font-semibold text-gray-700">Friend Not Found</h2>
-            </div>
-        );
-    }
+    // if (!friend) {
+    //     return (
+    //         <div className="text-center py-32">
+    //             <div className="text-7xl mb-6">😔</div>
+    //             <h2 className="text-3xl font-semibold text-gray-700">Friend Not Found</h2>
+    //         </div>
+    //     );
+    // }
 
     const handleContact = (type) => {
-        addInteraction(friend, type);
-        alert(`${type} with ${friend.name} added to Timeline!`);
-    };
+    addInteraction(friend, type);
+    toast.success(`${type} with ${friend.name} added to Timeline!`);
+};
 
     // বর্তমান friend এর জন্য interactions ফিল্টার করুন
     const friendInteractions = interactions.filter(
