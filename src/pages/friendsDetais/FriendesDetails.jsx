@@ -16,7 +16,6 @@ const FriendesDetails = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Context থেকে addInteraction এবং interactions উভয়ই নিন
     const { addInteraction, interactions } = useContext(ContactsFriendProviderContext);
 
     useEffect(() => {
@@ -48,145 +47,140 @@ const FriendesDetails = () => {
 
     const friend = friends.find(f => f.id === parseInt(id));
 
-    // if (!friend) {
-    //     return (
-    //         <div className="text-center py-32">
-    //             <div className="text-7xl mb-6">😔</div>
-    //             <h2 className="text-3xl font-semibold text-gray-700">Friend Not Found</h2>
-    //         </div>
-    //     );
-    // }
-
     const handleContact = (type) => {
-    addInteraction(friend, type);
-    toast.success(`${type} with ${friend.name} added to Timeline!`);
-};
+        addInteraction(friend, type);
+        toast.success(`${type} with ${friend.name} added to Timeline!`);
+    };
 
-    // বর্তমান friend এর জন্য interactions ফিল্টার করুন
     const friendInteractions = interactions.filter(
         (item) => item.friendId === friend.id
     );
 
     return (
-       
-       <div>
-         <Helmet>
+        <div>
+            <Helmet>
                 <title>Friend Details</title>
-                {/* content={`View details and interactions with ${friend.name}`} */}
                 <meta name="description" content={`View details and interactions with ${friend.name}`} />
-                
-        </Helmet>
+            </Helmet>
 
-        <div className="grid grid-cols-[260px_1fr] gap-4 p-5 min-h-screen bg-gray-50 container mx-auto">
-            {/* Left Column - Profile Card */}
-            <div className="flex flex-col gap-3">
-                <div className="bg-white border border-gray-100 rounded-2xl p-5 flex flex-col items-center gap-2 shadow-sm">
-                    <img
-                        src={friend.picture}
-                        alt={friend.name}
-                        className="w-18 h-18 rounded-full object-cover border-2 border-gray-200"
-                        style={{ width: 72, height: 72 }}
-                    />
-                    <p className="text-lg font-semibold text-gray-800">{friend.name}</p>
-                    <span className={`text-xs font-medium rounded-full px-3 py-1 ${getStatusInfo(friend.status).color}`}>
-                        {getStatusInfo(friend.status).label}
-                    </span>
-                    <div className="flex flex-wrap justify-center gap-2">
-                        {friend.tags.map((tag, i) => (
-                            <span key={i} className="text-xs font-medium bg-emerald-50 text-emerald-700 rounded-full px-3 py-1">
-                                {getCategoryLabel(tag)}
-                            </span>
-                        ))}
-                    </div>
-                    {friend.note && <p className="text-xs text-gray-400 italic text-center">"{friend.note}"</p>}
-                    {friend.preferred && <p className="text-xs text-gray-400">Preferred: {friend.preferred}</p>}
-                    <p className="text-sm text-gray-500 text-center">{friend.bio}</p>
-                </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-4 p-5 min-h-screen bg-gray-50 container mx-auto">
 
-                {/* Actions */}
-                <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
-                    <button className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium text-gray-700 border-b border-gray-100 hover:bg-gray-50 transition">
-                        <HiMiniBellSnooze /> Snooze 2 Weeks
-                    </button>
-                    <button className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium text-gray-700 border-b border-gray-100 hover:bg-gray-50 transition">
-                        <FaArchive /> Archive
-                    </button>
-                    <button className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium text-red-500 hover:bg-red-50 transition">
-                        <AiOutlineDelete /> Delete
-                    </button>
-                </div>
-            </div>
+                {/* Left Column */}
+                <div className="flex flex-col gap-3">
+                    <div className="bg-white border border-gray-100 rounded-2xl p-5 flex flex-col items-center gap-2 shadow-sm">
+                        <img
+                            src={friend.picture}
+                            alt={friend.name}
+                            className="w-18 h-18 rounded-full object-cover border-2 border-gray-200"
+                            style={{ width: 72, height: 72 }}
+                        />
+                        <p className="text-lg font-semibold text-gray-800">{friend.name}</p>
+                        <span className={`text-xs font-medium rounded-full px-3 py-1 ${getStatusInfo(friend.status).color}`}>
+                            {getStatusInfo(friend.status).label}
+                        </span>
 
-            {/* Right Column */}
-            <div className="flex flex-col gap-3">
-                {/* Stats Row */}
-                <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center gap-1 shadow-sm">
-                        <span className="font-semibold text-teal-700 text-3xl">{friend.days_since_contact || 0}</span>
-                        <span className="text-sm text-gray-500">Days Since Contact</span>
-                    </div>
-                    <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center gap-1 shadow-sm">
-                        <span className="font-semibold text-teal-700 text-3xl">{friend.goal || 30}</span>
-                        <span className="text-sm text-gray-500">Goal (Days)</span>
-                    </div>
-                    <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col justify-center items-center gap-1 shadow-sm">
-                        {/* <span className="font-semibold text-teal-700 text-lg">{friend.goal - (friend.next_due_date || 0)}</span>
-                        <span className="text-sm text-gray-500">Next Due</span> */}
-                        <p className="font-semibold text-teal-700 text-2xl">{friend.next_due_date}</p>
-                        <p className="text-sm text-gray-500">Next Due</p>
-                    </div>
-                </div>
+                        <div className="flex flex-wrap justify-center gap-2">
+                            {friend.tags.map((tag, i) => (
+                                <span key={i} className="text-xs font-medium bg-emerald-50 text-emerald-700 rounded-full px-3 py-1">
+                                    {getCategoryLabel(tag)}
+                                </span>
+                            ))}
+                        </div>
 
-                {/* Relationship Goal */}
-                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                    <div className="flex justify-between items-center mb-3">
-                        <h3 className="text-sm font-semibold text-gray-800">Relationship Goal</h3>
-                        <button className="text-xs border border-gray-200 rounded-lg px-3 py-1 hover:bg-gray-50 flex items-center gap-1">
-                            <FiEdit2 size={11} /> Edit
+                        {friend.note && <p className="text-xs text-gray-400 italic text-center">"{friend.note}"</p>}
+                        {friend.preferred && <p className="text-xs text-gray-400">Preferred: {friend.preferred}</p>}
+                        <p className="text-sm text-gray-500 text-center">{friend.bio}</p>
+                        <p className="text-sm text-gray-500 text-center">Preferd:{friend.email}</p>
+                    </div>
+
+                    <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                        <button className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium text-gray-700 border-b border-gray-100 hover:bg-gray-50 transition">
+                            <HiMiniBellSnooze /> Snooze 2 Weeks
                         </button>
-                    </div>
-                    <p className="text-sm text-gray-500">
-                        Connect every <strong className="text-gray-800 font-semibold">{friend.goal || 30} days</strong>
-                    </p>
-                </div>
-
-                {/* Quick Check-In */}
-                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                    <h3 className="text-sm font-semibold text-gray-800 mb-3">Quick Check-In</h3>
-                    <div className="grid grid-cols-3 gap-3">
-                        <button
-                            onClick={() => handleContact('Call')}
-                            className="border border-gray-100 rounded-2xl py-6 flex flex-col items-center gap-2 text-sm text-gray-600 hover:bg-emerald-50 hover:border-emerald-200 active:bg-emerald-100 transition-all active:scale-95"
-                        >
-                            <FiPhone size={22} />
-                            Call
+                        <button className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium text-gray-700 border-b border-gray-100 hover:bg-gray-50 transition">
+                            <FaArchive /> Archive
                         </button>
-                        <button
-                            onClick={() => handleContact('Text')}
-                            className="border border-gray-100 rounded-2xl py-6 flex flex-col items-center gap-2 text-sm text-gray-600 hover:bg-emerald-50 hover:border-emerald-200 active:bg-emerald-100 transition-all active:scale-95"
-                        >
-                            <FiMessageSquare size={22} />
-                            Text
-                        </button>
-                        <button
-                            onClick={() => handleContact('Video')}
-                            className="border border-gray-100 rounded-2xl py-6 flex flex-col items-center gap-2 text-sm text-gray-600 hover:bg-emerald-50 hover:border-emerald-200 active:bg-emerald-100 transition-all active:scale-95"
-                        >
-                            <FiVideo size={22} />
-                            Video
+                        <button className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium text-red-500 hover:bg-red-50 transition">
+                            <AiOutlineDelete /> Delete
                         </button>
                     </div>
                 </div>
 
-                {/* Recent Interactions */}
-                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                    <div className="flex justify-between items-center mb-3">
-                        <h3 className="text-sm font-semibold text-gray-800">Recent Interactions</h3>
-                        <button className="text-xs border border-gray-200 rounded-lg px-3 py-1 hover:bg-gray-50 flex items-center gap-1 text-gray-500">
-                            <FiClock size={11} /> Full History
-                        </button>
+                {/* Right Column */}
+                <div className="flex flex-col gap-3">
+
+                    {/* Stats Row */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center gap-1 shadow-sm">
+                            <span className="font-semibold text-teal-700 text-3xl">{friend.days_since_contact || 0}</span>
+                            <span className="text-sm text-gray-500">Days Since Contact</span>
+                        </div>
+
+                        <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center gap-1 shadow-sm">
+                            <span className="font-semibold text-teal-700 text-3xl">{friend.goal || 30}</span>
+                            <span className="text-sm text-gray-500">Goal (Days)</span>
+                        </div>
+
+                        <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col justify-center items-center gap-1 shadow-sm">
+                            <p className="font-semibold text-teal-700 text-2xl">{friend.next_due_date}</p>
+                            <p className="text-sm text-gray-500">Next Due</p>
+                        </div>
                     </div>
-                    <div>
+
+                    {/* Relationship Goal */}
+                    <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                        <div className="flex justify-between items-center mb-3">
+                            <h3 className="text-sm font-semibold text-gray-800">Relationship Goal</h3>
+                            <button className="text-xs border border-gray-200 rounded-lg px-3 py-1 hover:bg-gray-50 flex items-center gap-1">
+                                <FiEdit2 size={11} /> Edit
+                            </button>
+                        </div>
+                        <p className="text-sm text-gray-500">
+                            Connect every <strong className="text-gray-800 font-semibold">{friend.goal || 30} days</strong>
+                        </p>
+                    </div>
+
+                    {/* Quick Check-In */}
+                    <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                        <h3 className="text-sm font-semibold text-gray-800 mb-3">Quick Check-In</h3>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                            <button
+                                onClick={() => handleContact('Call')}
+                                className="border border-gray-100 bg-gray-100 rounded-2xl py-6 flex flex-col items-center gap-2 text-sm text-gray-600 hover:bg-emerald-50 hover:border-emerald-200 active:bg-emerald-100 transition-all active:scale-95"
+                            >
+                                <FiPhone size={22} />
+                                Call
+                            </button>
+
+                            <button
+                                onClick={() => handleContact('Text')}
+                                className="border border-gray-100 bg-gray-100 rounded-2xl py-6 flex flex-col items-center gap-2 text-sm text-gray-600 hover:bg-emerald-50 hover:border-emerald-200 active:bg-emerald-100 transition-all active:scale-95"
+                            >
+                                <FiMessageSquare size={22} />
+                                Text
+                            </button>
+
+                            <button
+                                onClick={() => handleContact('Video')}
+                                className="border border-gray-100 bg-gray-100 rounded-2xl py-6 flex flex-col items-center gap-2 text-sm text-gray-600 hover:bg-emerald-50 hover:border-emerald-200 active:bg-emerald-100 transition-all active:scale-95"
+                            >
+                                <FiVideo size={22} />
+                                Video
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Recent Interactions */}
+                    <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                        <div className="flex justify-between items-center mb-3">
+                            <h3 className="text-sm font-semibold text-gray-800">Recent Interactions</h3>
+                            <button className="text-xs border border-gray-200 rounded-lg px-3 py-1 hover:bg-gray-50 flex items-center gap-1 text-gray-500">
+                                <FiClock size={11} /> Full History
+                            </button>
+                        </div>
+
                         {friendInteractions.length === 0 ? (
                             <p className="text-sm text-gray-400 text-center py-4">No interactions yet</p>
                         ) : (
@@ -204,13 +198,11 @@ const FriendesDetails = () => {
                             ))
                         )}
                     </div>
+
                 </div>
             </div>
         </div>
-       </div>
-       
     );
 };
 
 export default FriendesDetails;
-

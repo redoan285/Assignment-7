@@ -3,16 +3,12 @@ import FriendsCards from './FriendsCards';
 import { OrbitProgress } from 'react-loading-indicators';
 import FriendesDetails from '../../pages/friendsDetais/FriendesDetails';
 
-// const firendsPromise = fetch("/friends.json").then(res => res.json());
-// const friends = await firendsPromise;
-// console.log(friends, "friends data from promise");
-{/* <FriendesDetails data={friends} /> */}
+
 
 
 const AllFriends = () => {
 
-    // const friends = use(firendsPromise); 
-    // console.log(friends, "friends");
+    
 
     const [friends, setFriends] = useState([]);
     

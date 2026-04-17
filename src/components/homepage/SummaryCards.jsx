@@ -2,7 +2,7 @@ import React from 'react';
 
 const SummaryCards = () => {
     return (
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6">
             {/* Total Friends */}
             <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center gap-1 shadow-sm">
                 <span className="font-semibold text-teal-700 text-3xl">6</span>
