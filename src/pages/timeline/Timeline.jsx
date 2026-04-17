@@ -3,7 +3,7 @@ import { ContactsFriendProviderContext } from '../../contest/ContactFriendProvid
 import { MdAddIcCall, MdOutlineTextsms } from 'react-icons/md';
 import { FcVideoCall } from 'react-icons/fc';
 import { Helmet } from 'react-helmet-async';
-import { Atom } from 'react-loading-indicators';  // Atom ইম্পোর্ট করতে ভুলবেন না
+import { Atom } from 'react-loading-indicators';  
 
 const Timeline = () => {
     const { interactions } = useContext(ContactsFriendProviderContext);
@@ -31,7 +31,7 @@ const Timeline = () => {
                 <meta name="description" content="View all your recent interactions with friends" />
             </Helmet>
 
-            {/* এখানে bg-gray-50 ও min-h-screen যোগ করুন */}
+            
             <div className="min-h-screen bg-gray-50 py-6 container mx-auto">
                 <div className="max-w-2xl mx-auto px-6">
                     <div className="bg-gray-50    overflow-hidden">

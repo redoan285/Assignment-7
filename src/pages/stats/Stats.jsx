@@ -1,14 +1,15 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import { ContactsFriendProviderContext } from '../../contest/ContactFriendProviderContext';
+import { Helmet } from 'react-helmet-async';
 
 const Stats = () => {
     const { interactions } = useContext(ContactsFriendProviderContext);
 
-    // ✅ select filter state
+    
     const [filter, setFilter] = useState('All');
 
-    // ✅ filtered interactions
+    
     const filteredInteractions = useMemo(() => {
         if (!interactions) return [];
 
@@ -17,7 +18,7 @@ const Stats = () => {
         return interactions.filter(i => i.type === filter);
     }, [interactions, filter]);
 
-    // chart data
+    
     const chartData = useMemo(() => {
         if (!filteredInteractions || filteredInteractions.length === 0) {
             return [
@@ -42,10 +43,17 @@ const Stats = () => {
     const totalInteractions = filteredInteractions?.length || 0;
 
     return (
+        
+       <>
+
+        <Helmet>
+                <title>Stats</title>
+                <meta name="stats" content="View all your recent interactions with friends" />
+            </Helmet>
         <div className='flex flex-col justify-center bg-gray-90 items-center h-full container mx-auto'>
             <h1 className='text-4xl font-bold font-black my-5 text-center'>Friendship Analytics</h1>
 
-            {/* ✅ DROPDOWN FILTER */}
+            
             <div className="w-full max-w-xs mb-4">
                 <select
                     value={filter}
@@ -59,7 +67,7 @@ const Stats = () => {
                 </select>
             </div>
 
-            {/* Chart */}
+            
             <div className="w-full max-w-4xl h-[500px] p-5 my-7 bg-white rounded-lg shadow-md ">
                 <h3 className='text-[#244D3F] font-bold mb-4'>By Interaction Type</h3>
 
@@ -98,6 +106,7 @@ const Stats = () => {
                 )}
             </div>
         </div>
+        </>
     );
 };
 

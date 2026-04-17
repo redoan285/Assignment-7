@@ -110,7 +110,7 @@ const FriendesDetails = () => {
                 {/* Right Column */}
                 <div className="flex flex-col gap-3">
 
-                    {/* Stats Row */}
+                   
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         <div className="bg-white border border-gray-100 rounded-2xl p-4 flex flex-col items-center gap-1 shadow-sm">
                             <span className="font-semibold text-teal-700 text-3xl">{friend.days_since_contact || 0}</span>
@@ -128,7 +128,7 @@ const FriendesDetails = () => {
                         </div>
                     </div>
 
-                    {/* Relationship Goal */}
+                    
                     <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="text-sm font-semibold text-gray-800">Relationship Goal</h3>
@@ -141,7 +141,7 @@ const FriendesDetails = () => {
                         </p>
                     </div>
 
-                    {/* Quick Check-In */}
+                    
                     <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                         <h3 className="text-sm font-semibold text-gray-800 mb-3">Quick Check-In</h3>
 
@@ -172,7 +172,7 @@ const FriendesDetails = () => {
                         </div>
                     </div>
 
-                    {/* Recent Interactions */}
+                    
                     <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
                         <div className="flex justify-between items-center mb-3">
                             <h3 className="text-sm font-semibold text-gray-800">Recent Interactions</h3>
