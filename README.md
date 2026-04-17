@@ -1,7 +1,7 @@
 # 🚀 KeenKeeper — Keep Your Friendships Alive
 
 <p align="center">
-  <img src="https://i.ibb.co/8D0Xw7N/banner.png" alt="KeenKeeper Banner" width="100%" />
+  <img src="/src/assets/homePage.png" alt="KeenKeeper Banner" width="100%" />
 </p>
 
 <p align="center">
