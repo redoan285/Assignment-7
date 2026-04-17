@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';   // ← সঠিক import
 import { getCategoryLabel, getStatusInfo } from '../../pages/catagory/Catagory'; // যদি আলাদা ফাইলে থাকে
+import { Helmet } from 'react-helmet-async';
 
 const FriendsCards = ({ data }) => {
     
     return (
+       <>
+
+        <Helmet>
+                <title>Home</title>
+                <meta name="description" content="Home page" />
+            </Helmet>
+
+
         <Link 
             to={`/${data.id}`} 
             className="block bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-200 overflow-hidden"
@@ -49,6 +58,7 @@ const FriendsCards = ({ data }) => {
 
             </div>
         </Link>
+       </>
     );
 };
 

@@ -15,6 +15,7 @@ const AllFriends = () => {
     // console.log(friends, "friends");
 
     const [friends, setFriends] = useState([]);
+    
     const [loading, setLoading] = useState(true);   
 
     useEffect(() => {
@@ -31,8 +32,8 @@ const AllFriends = () => {
 //   console.log(friends);
      
     return (
-        <div className='flex  flex-col items-start space-y-4 pt-4 mt-4 gap-4 container mx-auto'>
-            <h1 className='text-2xl font-bold'>Your Friends</h1>
+        <div className='flex  flex-col items-start space-y-4  bg-gray-50 gap-4 container mx-auto'>
+            <h1 className='text-2xl font-bold ml-3'>Your Friends</h1>
             {loading ? (
                 <p className="mx-auto text-center"><OrbitProgress  color="#32cd32" size="medium" text="" textColor="" /></p>
             ) : (
